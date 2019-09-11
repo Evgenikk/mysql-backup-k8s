@@ -1,3 +1,13 @@
+Деплой:
+```
+kubectl apply -f storage/backup-pv.yml
+kubectl apply -f storage/backup-pvc.yml
+kubectl apply -f storage/mysql-pv.yml
+kubectl apply -f storage/mysql-pvc.yml
+kubectl apply -f mysql-deployment.yml
+kubectl apply -f mysql-service.yml
+
+
 Посмотреть список таблиц в базе: 
 ```
 kubectl exec -it $MYSQLPOD -- mysql -ppassword2019 -e "use operator-db; show tables;"
