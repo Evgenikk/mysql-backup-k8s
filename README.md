@@ -1,7 +1,11 @@
-Посмотреть список таблиц в базе:
+Посмотреть список таблиц в базе: 
+```
 kubectl exec -it $MYSQLPOD -- mysql -ppassword2019 -e "use operator-db; show tables;"
-Посмотреть список баз:
+```
+Посмотреть список баз: 
+```
 kubectl exec -it $MYSQLPOD  -- mysql -ppassword2019 -e "show databases"
+```
 
 ```
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -31,12 +35,14 @@ kubectl exec -it $MYSQLPOD -- mysql -ppassword2019  -e "INSERT INTO test ( id, n
 kubectl exec -it $MYSQLPOD -- mysql -ppassword2019  -e "select * from test;" operator-db
 ```
 
+```
 +----+-------------+
 | id | name        |
 +----+-------------+
 |  1 | some data   |
 |  2 | some data-2 |
 +----+-------------+
+```
 
 Запускаем backup-job:
 ```
@@ -60,10 +66,11 @@ kubectl apply -f jobs/restore-job.yml
 ```
 kubectl exec -it $MYSQLPOD -- mysql -ppassword2019  -e "select * from test;" operator-db
 ```
-
+```
 +----+-------------+
 | id | name        |
 +----+-------------+
 |  1 | some data   |
 |  2 | some data-2 |
 +----+-------------+
+```
