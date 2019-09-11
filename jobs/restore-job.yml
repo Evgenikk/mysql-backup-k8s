@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: default
+  name: restore-job
+spec:
+  template:
+    metadata:
+      name: restore-job
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: backup
+        image: mysql:5.7
+        imagePullPolicy: IfNotPresent
+        command:
+        - /bin/sh
+        - -c
+        - "mysql -u root -h mysql -ppassword2019 operator-db < /backups/mysql-dump.sql"
+        volumeMounts:
+        - name: backup-pvc
+          mountPath: /backups
+      volumes:
+      - name: backup-pvc
+        persistentVolumeClaim:
+          claimName: backup-pvc
