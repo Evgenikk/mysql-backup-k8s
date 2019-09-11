@@ -1,8 +1,0 @@
-apiVersion: mysql.otus.homework/v1
-kind: MySQL
-metadata:
-  name: test-mysql
-spec:
-  sqlImage: mysql:8.0.17
-  storageSize: 1
-  backup: true
