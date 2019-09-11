@@ -6,7 +6,7 @@ kubectl apply -f storage/mysql-pv.yml
 kubectl apply -f storage/mysql-pvc.yml
 kubectl apply -f mysql-deployment.yml
 kubectl apply -f mysql-service.yml
-
+```
 
 Посмотреть список таблиц в базе: 
 ```
